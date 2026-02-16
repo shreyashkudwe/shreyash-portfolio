@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,68 +9,93 @@
 
 body{
 margin:0;
-font-family:Arial, sans-serif;
-background:#ffffff;
-color:black;
-overflow-x:hidden;
+font-family: 'Segoe UI', sans-serif;
+background: radial-gradient(circle at top, #1a1a1a, #000);
+color:white;
+display:flex;
+justify-content:center;
 }
 
-/* Liquid Glass */
-.glass{
-background:rgba(255,255,255,0.3);
-backdrop-filter:blur(15px);
-border-radius:20px;
-padding:15px;
-border:1px solid rgba(0,0,0,0.1);
+.container{
+width:100%;
+max-width:420px;
+min-height:100vh;
+padding:20px;
+box-sizing:border-box;
 position:relative;
-overflow:hidden;
 }
 
-/* Ripple */
-.glass:active::after{
-content:"";
-position:absolute;
-background:rgba(0,0,0,0.1);
-border-radius:50%;
-width:200px;
-height:200px;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-animation:ripple 0.6s linear;
-}
-@keyframes ripple{
-from{opacity:1;transform:translate(-50%,-50%) scale(0);}
-to{opacity:0;transform:translate(-50%,-50%) scale(3);}
-}
-
-.center{
+h1{
 text-align:center;
+font-size:24px;
+font-weight:600;
+margin-top:20px;
 }
 
 .dp{
-width:120px;
-height:120px;
+width:140px;
+height:140px;
 border-radius:50%;
-object-fit:cover;
-margin:20px auto;
 display:block;
+margin:20px auto;
+object-fit:cover;
+box-shadow:0 0 30px rgba(255,255,255,0.1);
 }
 
-.button{
-margin:10px 20px;
-cursor:pointer;
+.bio{
 text-align:center;
+font-size:16px;
+line-height:1.6;
+opacity:0.9;
+margin:20px 10px;
 }
 
-.shop{
-background:#e6e6e6;
+/* Swipe Button */
+.swipe-btn{
+background:linear-gradient(90deg,#ff3b3b,#ff0000);
+padding:14px;
+border-radius:30px;
+text-align:center;
+margin:20px 0;
+font-weight:500;
+cursor:pointer;
+transition:0.3s;
 }
 
-.social{
+.swipe-btn:hover{
+transform:scale(1.05);
+}
+
+/* Section Title */
+.section-title{
+text-align:center;
+margin:25px 0 15px 0;
+opacity:0.7;
+font-size:14px;
+letter-spacing:1px;
+}
+
+/* Glass Buttons */
+.glass-btn{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+padding:14px;
+border-radius:25px;
+margin-bottom:15px;
 display:flex;
 align-items:center;
-gap:10px;
+gap:12px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.glass-btn:hover{
+background:rgba(255,255,255,0.1);
+}
+
+.glass-btn img{
+width:22px;
 }
 
 /* Bottom Nav */
@@ -77,60 +103,25 @@ gap:10px;
 position:fixed;
 bottom:0;
 width:100%;
+max-width:420px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
 display:flex;
 justify-content:space-around;
-background:#ffffff;
-padding:10px 0;
-border-top:1px solid #ccc;
+padding:12px 0;
+border-top:1px solid rgba(255,255,255,0.1);
 }
 
-.navbtn{
+.nav-item{
+text-align:center;
+font-size:14px;
+opacity:0.6;
 cursor:pointer;
 }
 
-/* Reels Page */
-#reels{
-display:none;
-height:100vh;
-overflow-y:scroll;
-scroll-snap-type:y mandatory;
-}
-
-.reel{
-height:100vh;
-scroll-snap-align:start;
-display:flex;
-justify-content:center;
-align-items:center;
-position:relative;
-}
-
-video{
-height:100%;
-width:100%;
-object-fit:cover;
-}
-
-.mute{
-position:absolute;
-bottom:100px;
-right:20px;
-background:#e6e6e6;
-padding:10px;
-border-radius:50%;
-cursor:pointer;
-}
-
-.toggle{
-position:fixed;
-top:20px;
-right:20px;
-display:flex;
-gap:15px;
-}
-
-.active{
-font-weight:bold;
+.nav-item.active{
+color:#ff3b3b;
+opacity:1;
 }
 
 </style>
@@ -138,109 +129,70 @@ font-weight:bold;
 
 <body>
 
-<!-- HOME PAGE -->
-<div id="home">
+<div class="container">
 
-<div class="center">
-<h2>Shreyash Kudwe</h2>
+<h1>Shreyash Kudwe</h1>
 
 <img src="dp.jpg" class="dp">
 
-<p>
-I am a video creator sharing my creativity grind & building high-impact content
-</p>
+<div class="bio">
+I'm a video creator sharing my creative grind & building high-impact content
+</div>
 
-<div class="glass button shop">
+<div class="swipe-btn">
 Swipe right to check out my creations →
 </div>
 
-<h3>Contact Me On</h3>
+<div class="section-title">CONTACT ME ON</div>
 
 <a href="https://www.youtube.com/@shreyashKudwe1" target="_blank">
-<div class="glass button social">YouTube</div></a>
+<div class="glass-btn">
+<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+YouTube
+</div>
+</a>
 
 <a href="https://www.instagram.com/shreyaskudwe" target="_blank">
-<div class="glass button social">Instagram</div></a>
+<div class="glass-btn">
+<img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+Instagram
+</div>
+</a>
 
 <a href="mailto:shreyashkudwe1@gmail.com">
-<div class="glass button social">Gmail</div></a>
+<div class="glass-btn">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+Email
+</div>
+</a>
 
 <a href="https://discord.gg/H7Sw6YxQ" target="_blank">
-<div class="glass button social">Discord</div></a>
+<div class="glass-btn">
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
+Discord
+</div>
+</a>
 
 <a href="https://www.facebook.com/share/1NnH35MtPE/" target="_blank">
-<div class="glass button social">Facebook</div></a>
+<div class="glass-btn">
+<img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png">
+Facebook
+</div>
+</a>
 
 <a href="https://www.linkedin.com/in/shreyash-kudwe-935509381" target="_blank">
-<div class="glass button social">LinkedIn</div></a>
-
+<div class="glass-btn">
+<img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png">
+LinkedIn
 </div>
-</div>
-
-<!-- REELS PAGE -->
-<div id="reels">
-
-<div class="glass button shop center"
-onclick="window.open('https://shxxshop1.blogspot.com/?m=1')">
-My Shop View Now
-</div>
-
-<div class="reel">
-<video src="video1.mp4" muted loop></video>
-<div class="mute" onclick="toggleMute(this)">🔇</div>
-</div>
-
-<div class="reel">
-<video src="video2.mp4" muted loop></video>
-<div class="mute" onclick="toggleMute(this)">🔇</div>
-</div>
+</a>
 
 </div>
 
-<!-- NAVBAR -->
 <div class="navbar">
-<div class="navbtn" onclick="showHome()">Home</div>
-<div class="navbtn" onclick="showReels()">Reels & Photos</div>
+<div class="nav-item active">Home</div>
+<div class="nav-item">Reels & Photos</div>
 </div>
-
-<script>
-
-/* Navigation */
-function showHome(){
-document.getElementById("home").style.display="block";
-document.getElementById("reels").style.display="none";
-}
-
-function showReels(){
-document.getElementById("home").style.display="none";
-document.getElementById("reels").style.display="block";
-}
-
-/* Instagram Style Auto Play */
-const videos=document.querySelectorAll("video");
-
-const observer=new IntersectionObserver((entries)=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.play();
-}else{
-entry.target.pause();
-}
-});
-},{threshold:0.7});
-
-videos.forEach(video=>{
-observer.observe(video);
-});
-
-/* Mute Toggle */
-function toggleMute(btn){
-let video=btn.parentElement.querySelector("video");
-video.muted=!video.muted;
-btn.innerText=video.muted?"🔇":"🔊";
-}
-
-</script>
 
 </body>
 </html>
