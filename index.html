@@ -1,29 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shreyash</title>
+<title>Shreyash Kudwe</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family: Arial, sans-serif;
-}
 
 body{
+margin:0;
+font-family:Arial, sans-serif;
 background:#ffffff;
-color:#000;
+color:black;
 overflow-x:hidden;
 }
 
-.container{
-width:100%;
-max-width:430px;
-margin:auto;
-padding:20px;
+/* Liquid Glass */
+.glass{
+background:rgba(255,255,255,0.3);
+backdrop-filter:blur(15px);
+border-radius:20px;
+padding:15px;
+border:1px solid rgba(0,0,0,0.1);
+position:relative;
+overflow:hidden;
+}
+
+/* Ripple */
+.glass:active::after{
+content:"";
+position:absolute;
+background:rgba(0,0,0,0.1);
+border-radius:50%;
+width:200px;
+height:200px;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+animation:ripple 0.6s linear;
+}
+@keyframes ripple{
+from{opacity:1;transform:translate(-50%,-50%) scale(0);}
+to{opacity:0;transform:translate(-50%,-50%) scale(3);}
 }
 
 .center{
@@ -31,232 +48,196 @@ text-align:center;
 }
 
 .dp{
-width:110px;
-height:110px;
+width:120px;
+height:120px;
 border-radius:50%;
 object-fit:cover;
 margin:20px auto;
 display:block;
 }
 
-.glass{
-backdrop-filter: blur(15px);
-background: rgba(0,0,0,0.05);
-border-radius:20px;
-padding:15px;
-margin:12px 0;
-position:relative;
-overflow:hidden;
-transition:0.3s;
-}
-
-.dark-box{
-background:#111;
-color:#fff;
-}
-
-.light-dark{
-background:#222;
-color:#fff;
-}
-
-.box-link{
-text-decoration:none;
-color:inherit;
-display:block;
-}
-
-.icon-row{
-display:flex;
-justify-content:center;
-gap:40px;
-margin:20px 0;
-}
-
-.icon{
-font-size:28px;
+.button{
+margin:10px 20px;
 cursor:pointer;
-opacity:0.5;
+text-align:center;
 }
 
-.icon.active{
-opacity:1;
+.shop{
+background:#e6e6e6;
 }
 
-.ripple{
-position:absolute;
-border-radius:50%;
-transform:scale(0);
-background:rgba(255,255,255,0.5);
-animation:ripple 0.6s linear;
+.social{
+display:flex;
+align-items:center;
+gap:10px;
 }
 
-@keyframes ripple{
-to{
-transform:scale(4);
-opacity:0;
-}
-}
-
-.gallery{
-margin-top:10px;
-}
-
-.gallery video,
-.gallery img{
-width:100%;
-border-radius:15px;
-margin-bottom:15px;
-}
-
-.nav{
+/* Bottom Nav */
+.navbar{
 position:fixed;
 bottom:0;
 width:100%;
-max-width:430px;
-background:#fff;
 display:flex;
 justify-content:space-around;
+background:#ffffff;
 padding:10px 0;
-border-top:1px solid #ddd;
+border-top:1px solid #ccc;
 }
 
-.nav div{
+.navbtn{
 cursor:pointer;
+}
+
+/* Reels Page */
+#reels{
+display:none;
+height:100vh;
+overflow-y:scroll;
+scroll-snap-type:y mandatory;
+}
+
+.reel{
+height:100vh;
+scroll-snap-align:start;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+video{
+height:100%;
+width:100%;
+object-fit:cover;
+}
+
+.mute{
+position:absolute;
+bottom:100px;
+right:20px;
+background:#e6e6e6;
+padding:10px;
+border-radius:50%;
+cursor:pointer;
+}
+
+.toggle{
+position:fixed;
+top:20px;
+right:20px;
+display:flex;
+gap:15px;
+}
+
+.active{
 font-weight:bold;
 }
 
-.page{
-display:none;
-}
-
-.page.active{
-display:block;
-}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
 <!-- HOME PAGE -->
-<div id="home" class="page active">
+<div id="home">
 
-<h2 class="center">Shreyash Kudwe</h2>
+<div class="center">
+<h2>Shreyash Kudwe</h2>
 
 <img src="dp.jpg" class="dp">
 
-<p class="center">
-I am video creator sharing my creativity grind & building high-impact content
+<p>
+I am a video creator sharing my creativity grind & building high-impact content
 </p>
 
-<div class="glass dark-box center">
-Slide right to check my creativity →
+<div class="glass button shop">
+Swipe right to check out my creations →
 </div>
 
-<h3 class="center" style="margin-top:20px;">Contact me on</h3>
+<h3>Contact Me On</h3>
 
-<a href="https://www.youtube.com/@shreyashKudwe1" class="box-link">
-<div class="glass">YouTube</div>
-</a>
+<a href="https://www.youtube.com/@shreyashKudwe1" target="_blank">
+<div class="glass button social">YouTube</div></a>
 
-<a href="https://www.instagram.com/shreyaskudwe" class="box-link">
-<div class="glass">Instagram</div>
-</a>
+<a href="https://www.instagram.com/shreyaskudwe" target="_blank">
+<div class="glass button social">Instagram</div></a>
 
-<a href="mailto:shreyashkudwe1@gmail.com" class="box-link">
-<div class="glass">Gmail</div>
-</a>
+<a href="mailto:shreyashkudwe1@gmail.com">
+<div class="glass button social">Gmail</div></a>
 
-<a href="https://discord.gg/H7Sw6YxQ" class="box-link">
-<div class="glass">Discord</div>
-</a>
+<a href="https://discord.gg/H7Sw6YxQ" target="_blank">
+<div class="glass button social">Discord</div></a>
 
-<a href="https://www.facebook.com/share/1NnH35MtPE/" class="box-link">
-<div class="glass">Facebook</div>
-</a>
+<a href="https://www.facebook.com/share/1NnH35MtPE/" target="_blank">
+<div class="glass button social">Facebook</div></a>
 
-<a href="https://www.linkedin.com/in/shreyash-kudwe-935509381" class="box-link">
-<div class="glass">LinkedIn</div>
-</a>
+<a href="https://www.linkedin.com/in/shreyash-kudwe-935509381" target="_blank">
+<div class="glass button social">LinkedIn</div></a>
 
 </div>
-
-<!-- GALLERY PAGE -->
-<div id="gallery" class="page">
-
-<img src="dp.jpg" class="dp">
-<h3 class="center">Shreyash Kudwe</h3>
-
-<a href="https://shxxshop1.blogspot.com/?m=1" class="box-link">
-<div class="glass light-dark center">My Shop View Now</div>
-</a>
-
-<div class="icon-row">
-<div id="videoBtn" class="icon active">🎥</div>
-<div id="photoBtn" class="icon">📷</div>
 </div>
 
-<div id="videoGallery" class="gallery">
-<video controls muted>
-<source src="video1.mp4" type="video/mp4">
-</video>
+<!-- REELS PAGE -->
+<div id="reels">
+
+<div class="glass button shop center"
+onclick="window.open('https://shxxshop1.blogspot.com/?m=1')">
+My Shop View Now
 </div>
 
-<div id="photoGallery" class="gallery" style="display:none;">
-<img src="photo1.jpg">
+<div class="reel">
+<video src="video1.mp4" muted loop></video>
+<div class="mute" onclick="toggleMute(this)">🔇</div>
+</div>
+
+<div class="reel">
+<video src="video2.mp4" muted loop></video>
+<div class="mute" onclick="toggleMute(this)">🔇</div>
 </div>
 
 </div>
 
-</div>
-
-<!-- NAVIGATION -->
-<div class="nav">
-<div onclick="showPage('home')">Home</div>
-<div onclick="showPage('gallery')">Reels</div>
+<!-- NAVBAR -->
+<div class="navbar">
+<div class="navbtn" onclick="showHome()">Home</div>
+<div class="navbtn" onclick="showReels()">Reels & Photos</div>
 </div>
 
 <script>
 
-function showPage(page){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(page).classList.add('active');
+/* Navigation */
+function showHome(){
+document.getElementById("home").style.display="block";
+document.getElementById("reels").style.display="none";
 }
 
-document.querySelectorAll('.glass').forEach(button=>{
-button.addEventListener('click',function(e){
-let circle=document.createElement("span");
-circle.classList.add("ripple");
-this.appendChild(circle);
-
-let d=Math.max(this.clientWidth,this.clientHeight);
-circle.style.width=circle.style.height=d+'px';
-circle.style.left=e.clientX-this.offsetLeft-d/2+'px';
-circle.style.top=e.clientY-this.offsetTop-d/2+'px';
-
-setTimeout(()=>circle.remove(),600);
-});
-});
-
-const videoBtn=document.getElementById("videoBtn");
-const photoBtn=document.getElementById("photoBtn");
-const videoGallery=document.getElementById("videoGallery");
-const photoGallery=document.getElementById("photoGallery");
-
-videoBtn.onclick=()=>{
-videoGallery.style.display="block";
-photoGallery.style.display="none";
-videoBtn.classList.add("active");
-photoBtn.classList.remove("active");
+function showReels(){
+document.getElementById("home").style.display="none";
+document.getElementById("reels").style.display="block";
 }
 
-photoBtn.onclick=()=>{
-videoGallery.style.display="none";
-photoGallery.style.display="block";
-photoBtn.classList.add("active");
-videoBtn.classList.remove("active");
+/* Instagram Style Auto Play */
+const videos=document.querySelectorAll("video");
+
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.play();
+}else{
+entry.target.pause();
+}
+});
+},{threshold:0.7});
+
+videos.forEach(video=>{
+observer.observe(video);
+});
+
+/* Mute Toggle */
+function toggleMute(btn){
+let video=btn.parentElement.querySelector("video");
+video.muted=!video.muted;
+btn.innerText=video.muted?"🔇":"🔊";
 }
 
 </script>
