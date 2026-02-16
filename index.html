@@ -1,198 +1,157 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shreyash Kudwe</title>
-
-<style>
-
-body{
-margin:0;
-font-family: 'Segoe UI', sans-serif;
-background: radial-gradient(circle at top, #1a1a1a, #000);
-color:white;
-display:flex;
-justify-content:center;
-}
-
-.container{
-width:100%;
-max-width:420px;
-min-height:100vh;
-padding:20px;
-box-sizing:border-box;
-position:relative;
-}
-
-h1{
-text-align:center;
-font-size:24px;
-font-weight:600;
-margin-top:20px;
-}
-
-.dp{
-width:140px;
-height:140px;
-border-radius:50%;
-display:block;
-margin:20px auto;
-object-fit:cover;
-box-shadow:0 0 30px rgba(255,255,255,0.1);
-}
-
-.bio{
-text-align:center;
-font-size:16px;
-line-height:1.6;
-opacity:0.9;
-margin:20px 10px;
-}
-
-/* Swipe Button */
-.swipe-btn{
-background:linear-gradient(90deg,#ff3b3b,#ff0000);
-padding:14px;
-border-radius:30px;
-text-align:center;
-margin:20px 0;
-font-weight:500;
-cursor:pointer;
-transition:0.3s;
-}
-
-.swipe-btn:hover{
-transform:scale(1.05);
-}
-
-/* Section Title */
-.section-title{
-text-align:center;
-margin:25px 0 15px 0;
-opacity:0.7;
-font-size:14px;
-letter-spacing:1px;
-}
-
-/* Glass Buttons */
-.glass-btn{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-backdrop-filter:blur(10px);
-padding:14px;
-border-radius:25px;
-margin-bottom:15px;
-display:flex;
-align-items:center;
-gap:12px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.glass-btn:hover{
-background:rgba(255,255,255,0.1);
-}
-
-.glass-btn img{
-width:22px;
-}
-
-/* Bottom Nav */
-.navbar{
-position:fixed;
-bottom:0;
-width:100%;
-max-width:420px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-display:flex;
-justify-content:space-around;
-padding:12px 0;
-border-top:1px solid rgba(255,255,255,0.1);
-}
-
-.nav-item{
-text-align:center;
-font-size:14px;
-opacity:0.6;
-cursor:pointer;
-}
-
-.nav-item.active{
-color:#ff3b3b;
-opacity:1;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreyash Kudwe | Creator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
 
-<div class="container">
+    <div class="mobile-container">
+        
+        <section id="home-page" class="page active">
+            <h2 class="name-title">Shreyash Kudwe</h2>
+            <div class="profile-circle">
+                <img src="dp.jpg" alt="Profile"> </div>
+            <p class="bio">I am video creator sharing my creativity grind & building high-impact content</p>
+            
+            <div class="glass-box slide-box">
+                Slide right to check my creativity
+            </div>
 
-<h1>Shreyash Kudwe</h1>
+            <p class="contact-text">Contact me on</p>
 
-<img src="dp.jpg" class="dp">
+            <div class="links-container">
+                <a href="https://www.youtube.com/@shreyashKudwe1" class="glass-link ripple"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://www.instagram.com/shreyaskudwe" class="glass-link ripple"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="mailto:shreyashkudwe1@gmail.com" class="glass-link ripple"><i class="fas fa-envelope"></i> Gmail</a>
+                <a href="https://discord.gg/H7Sw6YxQ" class="glass-link ripple"><i class="fab fa-discord"></i> Discord</a>
+                <a href="https://www.facebook.com/share/1NnH35MtPE/" class="glass-link ripple"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="https://www.linkedin.com/in/shreyash-kudwe-935509381" class="glass-link ripple"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </section>
 
-<div class="bio">
-I'm a video creator sharing my creative grind & building high-impact content
-</div>
+        <section id="reels-page" class="page">
+            <div class="profile-circle-small">
+                <img src="dp.jpg" alt="Profile">
+            </div>
+            <h3 class="name-small">Shreyash Kudwe</h3>
+            
+            <a href="https://shxxshop1.blogspot.com/?m=1" class="glass-box shop-box ripple">My Shop View Now</a>
 
-<div class="swipe-btn">
-Swipe right to check out my creations →
-</div>
+            <div class="tab-icons">
+                <i class="fas fa-video active-tab" id="video-tab"></i>
+                <i class="fas fa-image" id="photo-tab"></i>
+            </div>
 
-<div class="section-title">CONTACT ME ON</div>
+            <div class="content-scroll">
+                <div class="media-card">
+                    <video src="video1.mp4" loop muted playsinline></video>
+                    <button class="mute-btn"><i class="fas fa-volume-mute"></i></button>
+                </div>
+                </div>
+        </section>
 
-<a href="https://www.youtube.com/@shreyashKudwe1" target="_blank">
-<div class="glass-btn">
-<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
-YouTube
-</div>
-</a>
+        <nav class="bottom-nav">
+            <div class="nav-item active" onclick="showPage('home-page')">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="nav-item" onclick="showPage('reels-page')">
+                <i class="fas fa-th"></i>
+            </div>
+        </nav>
+    </div>
 
-<a href="https://www.instagram.com/shreyaskudwe" target="_blank">
-<div class="glass-btn">
-<img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
-Instagram
-</div>
-</a>
-
-<a href="mailto:shreyashkudwe1@gmail.com">
-<div class="glass-btn">
-<img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
-Email
-</div>
-</a>
-
-<a href="https://discord.gg/H7Sw6YxQ" target="_blank">
-<div class="glass-btn">
-<img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
-Discord
-</div>
-</a>
-
-<a href="https://www.facebook.com/share/1NnH35MtPE/" target="_blank">
-<div class="glass-btn">
-<img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png">
-Facebook
-</div>
-</a>
-
-<a href="https://www.linkedin.com/in/shreyash-kudwe-935509381" target="_blank">
-<div class="glass-btn">
-<img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png">
-LinkedIn
-</div>
-</a>
-
-</div>
-
-<div class="navbar">
-<div class="nav-item active">Home</div>
-<div class="nav-item">Reels & Photos</div>
-</div>
-
+    <script src="script.js"></script>
 </body>
 </html>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background: #f0f0f0; display: flex; justify-content: center; }
+
+.mobile-container {
+    width: 100%; max-width: 450px; height: 100vh;
+    background: white; position: relative; overflow: hidden;
+    color: black;
+}
+
+.page { display: none; padding: 20px; text-align: center; height: 90vh; overflow-y: auto; }
+.page.active { display: block; }
+
+/* Home Elements */
+.name-title { font-weight: 600; margin-top: 20px; font-size: 1.5rem; }
+.profile-circle {
+    width: 120px; height: 120px; border-radius: 50%;
+    overflow: hidden; margin: 20px auto; border: 2px solid #eee;
+}
+.profile-circle img { width: 100%; height: 100%; object-fit: cover; }
+.bio { font-size: 0.9rem; color: #444; margin-bottom: 30px; line-height: 1.4; padding: 0 20px; }
+
+/* Liquid Glass Box */
+.glass-box {
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px; padding: 15px; margin: 10px auto;
+    width: 90%;
+}
+.slide-box { background: rgba(0,0,0,0.7); color: white; margin-bottom: 30px; }
+.shop-box { background: rgba(0,0,0,0.7); color: white; text-decoration: none; display: block; }
+
+/* Contact Links */
+.contact-text { margin-bottom: 15px; font-weight: 500; }
+.glass-link {
+    display: flex; align-items: center; justify-content: flex-start;
+    text-decoration: none; color: black; padding: 12px 20px;
+    margin-bottom: 10px; border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.glass-link i { margin-right: 15px; font-size: 1.2rem; color: #333; }
+
+/* Ripple Effect */
+.ripple { position: relative; overflow: hidden; }
+.ripple:after {
+    content: ""; display: block; position: absolute; width: 100%; height: 100%;
+    top: 0; left: 0; pointer-events: none;
+    background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+    background-repeat: no-repeat; background-position: 50%;
+    transform: scale(10, 10); opacity: 0; transition: transform .5s, opacity 1s;
+}
+.ripple:active:after { transform: scale(0, 0); opacity: .2; transition: 0s; }
+
+/* Reels Page */
+.profile-circle-small { width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin: 0 auto; }
+.profile-circle-small img { width: 100%; height: 100%; }
+.tab-icons { display: flex; justify-content: center; gap: 50px; margin-top: 20px; font-size: 1.5rem; color: #ccc; }
+.active-tab { color: #333; border-bottom: 2px solid black; }
+
+/* Navigation */
+.bottom-nav {
+    position: absolute; bottom: 0; width: 100%; height: 60px;
+    display: flex; justify-content: space-around; align-items: center;
+    border-top: 1px solid #eee; background: white;
+}
+.nav-item { font-size: 1.5rem; color: #bbb; cursor: pointer; }
+.nav-item.active { color: #333; }
+function showPage(pageId) {
+    // Pages switch karega
+    document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+
+    // Nav icons ka color change karega
+    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+}
+
+// Mute/Unmute toggle for videos
+document.querySelectorAll('.mute-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        let video = this.parentElement.querySelector('video');
+        video.muted = !video.muted;
+        this.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+    });
+});
+
