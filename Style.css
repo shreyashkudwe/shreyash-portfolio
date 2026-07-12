@@ -171,6 +171,7 @@ p{
 }
 #gallery{
     padding:60px 20px;
+    background: url("images/background.jpg");
     text-align:center;
 }
 
