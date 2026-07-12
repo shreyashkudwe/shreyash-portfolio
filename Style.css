@@ -169,3 +169,14 @@ p{
     width:220px;
 }
 }
+#gallery{
+    padding:60px 20px;
+    text-align:center;
+}
+
+#galleryContainer{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:20px;
+}
