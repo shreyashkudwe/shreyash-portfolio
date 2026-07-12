@@ -1,0 +1,171 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* Hero Section */
+.hero{
+    height:100vh;
+    background:url("background.jpg") center center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.65);
+}
+
+.content{
+    position:relative;
+    z-index:2;
+    animation:fadeUp 1.5s ease;
+}
+
+.profile{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #fff;
+    box-shadow:0 0 30px rgba(255,255,255,.5);
+    animation:float 3s ease-in-out infinite;
+}
+
+h1{
+    font-size:52px;
+    margin-top:20px;
+}
+
+p{
+    margin:15px auto;
+    max-width:700px;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.btns{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.btns a{
+    text-decoration:none;
+    color:#fff;
+    padding:12px 25px;
+    border:2px solid #fff;
+    border-radius:30px;
+    transition:.4s;
+}
+
+.btns a:hover{
+    background:#00d9ff;
+    border-color:#00d9ff;
+    color:#000;
+    transform:translateY(-5px);
+    box-shadow:0 0 20px #00d9ff;
+}
+
+/* Sidebar */
+.sidebar{
+    position:fixed;
+    left:-260px;
+    top:0;
+    width:250px;
+    height:100%;
+    background:#111;
+    transition:.5s;
+    padding-top:80px;
+    z-index:999;
+}
+
+.sidebar a{
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    padding:18px 30px;
+    transition:.3s;
+}
+
+.sidebar a:hover{
+    background:#00d9ff;
+    color:#000;
+}
+
+.sidebar.active{
+    left:0;
+}
+
+.menu-btn{
+    position:fixed;
+    top:20px;
+    left:20px;
+    font-size:30px;
+    cursor:pointer;
+    z-index:1000;
+}
+
+/* Animations */
+@keyframes float{
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+h1{
+    font-size:36px;
+}
+
+.profile{
+    width:150px;
+    height:150px;
+}
+
+p{
+    font-size:16px;
+    padding:0 20px;
+}
+
+.btns{
+    flex-direction:column;
+    align-items:center;
+}
+
+.btns a{
+    width:220px;
+}
+}
