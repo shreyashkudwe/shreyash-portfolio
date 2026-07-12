@@ -40,3 +40,19 @@ window.addEventListener("load", () => {
     }, 1500);
   }
 });
+const photoInput = document.getElementById("photoInput");
+const galleryContainer = document.getElementById("galleryContainer");
+
+photoInput.addEventListener("change", function () {
+    galleryContainer.innerHTML = "";
+
+    Array.from(this.files).forEach(file => {
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(file);
+        img.style.width = "220px";
+        img.style.margin = "10px";
+        img.style.borderRadius = "15px";
+        img.style.boxShadow = "0 0 15px rgba(255,255,255,.3)";
+        galleryContainer.appendChild(img);
+    });
+});
