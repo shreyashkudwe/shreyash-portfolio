@@ -1,146 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style.css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shreyash Kudwe</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+:root {
+  --bg: #f3f3f0;
+  --fg: #0b0b10;
+  --muted: #55555f;
+  --rule: #0b0b10;
+  --soft: #d9d9d3;
+  --blue: #2340ff;
+  --blue-ink: #ffffff;
+  --display: "Anton", "Arial Narrow", Impact, sans-serif;
+  --body: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0b10; --fg: #f3f3f0; --muted: #a0a0ab; --rule: #f3f3f0; --soft: #2a2a33;
+    --blue: #3550ff; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b0b10; --fg: #f3f3f0; --muted: #a0a0ab; --rule: #f3f3f0; --soft: #2a2a33;
+  --blue: #3550ff; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 0;
+}
+p, h1, h2, dl, dd, ul { margin: 0; padding: 0; }
+.band { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.inner { max-width: 760px; margin: 0 auto; }
+.mono { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.hero { background: var(--blue); color: var(--blue-ink); padding-block: 22px 36px; }
+.hero .inner { display: flex; flex-direction: column; gap: 28px; }
+.hero .meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; opacity: 0.9; }
+h1 {
+  font-family: var(--display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(4.2rem, 24vw, 10rem); line-height: 0.88; letter-spacing: -0.01em;
+}
+h1 span { display: block; }
+.hero .lead { max-width: 40ch; font-size: 1.1rem; }
+
+section { padding-block: 32px 0; }
+section:last-of-type { padding-bottom: 64px; }
+h2 { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-bottom: 12px; border-bottom: 3px solid var(--rule); margin-bottom: 4px; }
+
+.skills { list-style: none; display: flex; flex-direction: column; }
+.skills li {
+  font-family: var(--display); text-transform: uppercase; font-size: clamp(2rem, 9vw, 3.4rem); line-height: 1.05;
+  padding-block: 12px; border-bottom: 1px solid var(--soft); display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
 }
 
-<script src="script.js"></script>
-body{
-background:#000;
-color:#fff;
-overflow-x:hidden;
-}
+dl.details > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--soft); align-items: baseline; }
+dl.details dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+dl.details dd { font-weight: 500; overflow-wrap: anywhere; }
 
-.hero{
-height:100vh;
-background:url("background.jpg") center/cover no-repeat;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-position:relative;
+.links { list-style: none; }
+.links a {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  padding: 18px 12px; margin-inline: -12px; color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--soft);
+  transition: background 0.12s, color 0.12s;
 }
+.links a:hover, .links a:focus-visible { background: var(--blue); color: var(--blue-ink); outline: none; }
+.links a:hover .sub, .links a:focus-visible .sub { color: var(--blue-ink); }
+.links .name { font-family: var(--display); text-transform: uppercase; font-size: clamp(2rem, 9vw, 3.4rem); line-height: 1; }
+.links .sub { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--muted); text-align: right; overflow-wrap: anywhere; min-width: 0; }
+.links .arrow { font-family: var(--display); font-size: 1.6rem; margin-left: 4px; }
 
-.hero::before{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.65);
-}
-
-.content{
-position:relative;
-z-index:2;
-}
-
-.profile{
-width:180px;
-height:180px;
-border-radius:50%;
-border:5px solid white;
-object-fit:cover;
-animation:float 3s infinite ease-in-out;
-}
-
-@keyframes float{
-50%{
-transform:translateY(-15px);
-}
-}
-
-h1{
-font-size:50px;
-margin-top:20px;
-}
-
-p{
-margin-top:10px;
-font-size:18px;
-max-width:700px;
-}
-
-.btns{
-margin-top:30px;
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
-}
-
-.btns a{
-padding:12px 25px;
-border-radius:30px;
-background:white;
-color:black;
-text-decoration:none;
-font-weight:bold;
-transition:.3s;
-}
-
-.btns a:hover{
-background:#00eaff;
-transform:scale(1.08);
+@media (max-width: 480px) {
+  dl.details > div { grid-template-columns: 1fr; gap: 2px; }
+  .links a { flex-wrap: wrap; align-items: flex-end; }
+  .links .sub { text-align: left; order: 3; flex-basis: 100%; }
 }
 </style>
-
 </head>
 <body>
 
-<section class="hero">
-
-<div class="content">
-
-<img src="profile.jpg" class="profile">
-
-<h1>Shreyash Kudwe</h1>
-
-<p>
-I'm a video creator, sharing my creativity, documenting my journey,
-and building high-impact content.
-</p>
-
-  <section id="gallery">
-    <h2>My Gallery</h2>
-
-    <input type="file" id="photoInput" accept="image/*" multiple>
-
-    <div id="galleryContainer"></div>
-  </section>
-
-<div class="btns">
-
-<a href="https://www.youtube.com/@shreyashKudwe1" target="_blank">YouTube</a>
-
-<a href="https://www.linkedin.com/in/shreyash-kudwe-935509381" target="_blank">LinkedIn</a>
-
-<a href="https://discord.gg/tX4ZunA2" target="_blank">Discord</a><img src="photo/IMG_20260607_134747_Burst03.jpg" class="profile">
-
-<a href="https://www.facebook.com/share/1A7tkNLiHo/" target="_blank">Facebook</a>
-
-<a href="https://shxxshop1.blogspot.com/?m=1" target="_blank">Shop SHX</a>
-<img src="photo/profile.jpg" class="profile">
-<a href="mailto:shreyashkudwe1@gmail.com">Contact</a>
-
+<div class="hero band">
+  <div class="inner">
+    <div class="meta mono"><span>Video creator</span><span>Dhamangaon Railway</span></div>
+    <h1><span>Shreyash</span><span>Kudwe</span></h1>
+    <p class="lead">I'm a video creator, sharing my creativity, documenting my journey, and building high-impact content.</p>
+  </div>
 </div>
 
-</div>
+<div class="band">
+  <div class="inner">
+    <section>
+      <h2>Skills</h2>
+      <ul class="skills">
+        <li>Graphic design</li>
+        <li>Motion graphics</li>
+        <li>UI/UX</li>
+      </ul>
+    </section>
 
-</section>
+    <section>
+      <h2>Details</h2>
+      <dl class="details">
+        <div><dt>Name</dt><dd>Shreyash Kudwe</dd></div>
+        <div><dt>Location</dt><dd>Dhamangaon Railway</dd></div>
+        <div><dt>Work</dt><dd>Video editor, graphic designer</dd></div>
+        <div><dt>Status</dt><dd>Currently studying</dd></div>
+        <div><dt>Languages</dt><dd>English, Marathi, Hindi</dd></div>
+        <div><dt>Contact</dt><dd>shreyashkudwe1@gmail.com</dd></div>
+      </dl>
+    </section>
+
+    <section>
+      <h2>Links</h2>
+      <ul class="links">
+        <li><a href="https://www.youtube.com/@shreyashKudwe1" target="_blank" rel="noopener"><span class="name">YouTube</span><span class="sub">prasnal</span><span class="arrow">&#8599;</span></a></li>
+        <li><a href="https://www.linkedin.com/in/shreyash-kudwe-935509381" target="_blank" rel="noopener"><span class="name">LinkedIn</span><span class="sub">shreyash-kudwe</span><span class="arrow">&#8599;</span></a></li>
+        <li><a href="https://discord.gg/tX4ZunA2" target="_blank" rel="noopener"><span class="name">Discord</span><span class="sub">discord.gg/tX4ZunA2</span><span class="arrow">&#8599;</span></a></li>
+        <li><a href="https://shxxshop1.blogspot.com/?m=1" target="_blank" rel="noopener"><span class="name">Shop</span><span class="sub">shx</span><span class="arrow">&#8599;</span></a></li>
+      </ul>
+    </section>
+  </div>
+</div>
 
 </body>
 </html>
-<img src="images/profile.jpg">
-<img src="images/IMG_20260607_134747_Burst03.jpg" class="profile">
