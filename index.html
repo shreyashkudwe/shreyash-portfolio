@@ -1,34 +1,39 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Shreyash Kudwe</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+
+  <title>Shreyash Kudwe Glass</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap">
 <style>
+/* Layout: one scrolling liquid-glass page. Color orbs drift behind frosted, refracting panels with rim light that follows the pointer (or the scroll on touch). A draggable glass lens magnifies whatever it passes over. Floating glass tab bar with a sliding indicator. */
 :root {
-  --bg: #f3f3f0;
-  --fg: #0b0b10;
-  --muted: #55555f;
-  --rule: #0b0b10;
-  --soft: #d9d9d3;
-  --blue: #2340ff;
-  --blue-ink: #ffffff;
-  --display: "Anton", "Arial Narrow", Impact, sans-serif;
-  --body: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --bg: #dde4ff;
+  --fg: #0f1334;
+  --muted: #474e7c;
+  --glass: rgba(255, 255, 255, 0.26);
+  --glass-strong: rgba(255, 255, 255, 0.46);
+  --edge: rgba(255, 255, 255, 0.95);
+  --edge-dim: rgba(255, 255, 255, 0.32);
+  --shadow: rgba(38, 48, 130, 0.28);
+  --orb1: #ff8fc4; --orb2: #6f9dff; --orb3: #b093ff; --orb4: #6fe6cf;
+  --accent: #3d4bff;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0b0b10; --fg: #f3f3f0; --muted: #a0a0ab; --rule: #f3f3f0; --soft: #2a2a33;
-    --blue: #3550ff; color-scheme: dark;
+    --bg: #070920; --fg: #f3f4ff; --muted: #cdd1f0;
+    --glass: rgba(255, 255, 255, 0.07); --glass-strong: rgba(255, 255, 255, 0.15);
+    --edge: rgba(255, 255, 255, 0.6); --edge-dim: rgba(255, 255, 255, 0.12); --shadow: rgba(0, 0, 0, 0.6);
+    --orb1: #ff4f9a; --orb2: #3a5bff; --orb3: #8a5cff; --orb4: #14c9a8; --accent: #9aa8ff; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0b0b10; --fg: #f3f3f0; --muted: #a0a0ab; --rule: #f3f3f0; --soft: #2a2a33;
-  --blue: #3550ff; color-scheme: dark;
+  --bg: #070920; --fg: #f3f4ff; --muted: #cdd1f0;
+  --glass: rgba(255, 255, 255, 0.07); --glass-strong: rgba(255, 255, 255, 0.15);
+  --edge: rgba(255, 255, 255, 0.6); --edge-dim: rgba(255, 255, 255, 0.12); --shadow: rgba(0, 0, 0, 0.6);
+  --orb1: #ff4f9a; --orb2: #3a5bff; --orb3: #8a5cff; --orb4: #14c9a8; --accent: #9aa8ff; color-scheme: dark;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--fg);
@@ -36,99 +41,13 @@ body {
   font-size: 16px;
   line-height: 1.55;
   margin: 0;
+  position: relative;
+  overflow-x: hidden;
+  padding-block: 28px 130px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 p, h1, h2, dl, dd, ul { margin: 0; padding: 0; }
-.band { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.inner { max-width: 760px; margin: 0 auto; }
-.mono { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
 
-.hero { background: var(--blue); color: var(--blue-ink); padding-block: 22px 36px; }
-.hero .inner { display: flex; flex-direction: column; gap: 28px; }
-.hero .meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; opacity: 0.9; }
-h1 {
-  font-family: var(--display); font-weight: 400; text-transform: uppercase;
-  font-size: clamp(4.2rem, 24vw, 10rem); line-height: 0.88; letter-spacing: -0.01em;
-}
-h1 span { display: block; }
-.hero .lead { max-width: 40ch; font-size: 1.1rem; }
-
-section { padding-block: 32px 0; }
-section:last-of-type { padding-bottom: 64px; }
-h2 { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-bottom: 12px; border-bottom: 3px solid var(--rule); margin-bottom: 4px; }
-
-.skills { list-style: none; display: flex; flex-direction: column; }
-.skills li {
-  font-family: var(--display); text-transform: uppercase; font-size: clamp(2rem, 9vw, 3.4rem); line-height: 1.05;
-  padding-block: 12px; border-bottom: 1px solid var(--soft); display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
-}
-
-dl.details > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--soft); align-items: baseline; }
-dl.details dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-dl.details dd { font-weight: 500; overflow-wrap: anywhere; }
-
-.links { list-style: none; }
-.links a {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
-  padding: 18px 12px; margin-inline: -12px; color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--soft);
-  transition: background 0.12s, color 0.12s;
-}
-.links a:hover, .links a:focus-visible { background: var(--blue); color: var(--blue-ink); outline: none; }
-.links a:hover .sub, .links a:focus-visible .sub { color: var(--blue-ink); }
-.links .name { font-family: var(--display); text-transform: uppercase; font-size: clamp(2rem, 9vw, 3.4rem); line-height: 1; }
-.links .sub { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--muted); text-align: right; overflow-wrap: anywhere; min-width: 0; }
-.links .arrow { font-family: var(--display); font-size: 1.6rem; margin-left: 4px; }
-
-@media (max-width: 480px) {
-  dl.details > div { grid-template-columns: 1fr; gap: 2px; }
-  .links a { flex-wrap: wrap; align-items: flex-end; }
-  .links .sub { text-align: left; order: 3; flex-basis: 100%; }
-}
-</style>
-</head>
-<body>
-
-<div class="hero band">
-  <div class="inner">
-    <div class="meta mono"><span>Video creator</span><span>Dhamangaon Railway</span></div>
-    <h1><span>Shreyash</span><span>Kudwe</span></h1>
-    <p class="lead">I'm a video creator, sharing my creativity, documenting my journey, and building high-impact content.</p>
-  </div>
-</div>
-
-<div class="band">
-  <div class="inner">
-    <section>
-      <h2>Skills</h2>
-      <ul class="skills">
-        <li>Graphic design</li>
-        <li>Motion graphics</li>
-        <li>UI/UX</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Details</h2>
-      <dl class="details">
-        <div><dt>Name</dt><dd>Shreyash Kudwe</dd></div>
-        <div><dt>Location</dt><dd>Dhamangaon Railway</dd></div>
-        <div><dt>Work</dt><dd>Video editor, graphic designer</dd></div>
-        <div><dt>Status</dt><dd>Currently studying</dd></div>
-        <div><dt>Languages</dt><dd>English, Marathi, Hindi</dd></div>
-        <div><dt>Contact</dt><dd>shreyashkudwe1@gmail.com</dd></div>
-      </dl>
-    </section>
-
-    <section>
-      <h2>Links</h2>
-      <ul class="links">
-        <li><a href="https://www.youtube.com/@shreyashKudwe1" target="_blank" rel="noopener"><span class="name">YouTube</span><span class="sub">prasnal</span><span class="arrow">&#8599;</span></a></li>
-        <li><a href="https://www.linkedin.com/in/shreyash-kudwe-935509381" target="_blank" rel="noopener"><span class="name">LinkedIn</span><span class="sub">shreyash-kudwe</span><span class="arrow">&#8599;</span></a></li>
-        <li><a href="https://discord.gg/tX4ZunA2" target="_blank" rel="noopener"><span class="name">Discord</span><span class="sub">discord.gg/tX4ZunA2</span><span class="arrow">&#8599;</span></a></li>
-        <li><a href="https://shxxshop1.blogspot.com/?m=1" target="_blank" rel="noopener"><span class="name">Shop</span><span class="sub">shx</span><span class="arrow">&#8599;</span></a></li>
-      </ul>
-    </section>
-  </div>
-</div>
-
-</body>
-</html>
+/* film grain gives the glass something to catch */
+body::after {
