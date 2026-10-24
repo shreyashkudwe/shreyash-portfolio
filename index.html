@@ -1,9 +1,11 @@
-
-  <title>Shreyash Kudwe Glass</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shreyash Kudwe</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&display=swap">
 <style>
-/* Layout: one scrolling liquid-glass page. Color orbs drift behind frosted, refracting panels with rim light that follows the pointer (or the scroll on touch). A draggable glass lens magnifies whatever it passes over. Floating glass tab bar with a sliding indicator. */
 :root {
   --bg: #dde4ff;
   --fg: #0f1334;
@@ -49,5 +51,255 @@ body {
 }
 p, h1, h2, dl, dd, ul { margin: 0; padding: 0; }
 
-/* film grain gives the glass something to catch */
 body::after {
+  content: ""; position: fixed; inset: 0; z-index: 3; pointer-events: none; opacity: 0.16; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.orbs { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.orb { position: absolute; border-radius: 50%; filter: blur(26px); opacity: 0.95; animation: drift 24s ease-in-out infinite alternate; }
+.o1 { width: 72vmax; height: 72vmax; max-width: 660px; max-height: 660px; left: -22%; top: -14%; background: radial-gradient(circle at 35% 35%, var(--orb1), transparent 68%); }
+.o2 { width: 78vmax; height: 78vmax; max-width: 720px; max-height: 720px; right: -30%; top: 16%; background: radial-gradient(circle at 40% 40%, var(--orb2), transparent 68%); animation-duration: 30s; }
+.o3 { width: 62vmax; height: 62vmax; max-width: 580px; max-height: 580px; left: 6%; bottom: -20%; background: radial-gradient(circle at 40% 40%, var(--orb3), transparent 68%); animation-duration: 27s; }
+.o4 { width: 46vmax; height: 46vmax; max-width: 440px; max-height: 440px; right: 2%; bottom: 4%; background: radial-gradient(circle at 40% 40%, var(--orb4), transparent 68%); animation-duration: 33s; }
+@keyframes drift { from { transform: translate(0, 0) scale(1); } to { transform: translate(7vmax, 5vmax) scale(1.14); } }
+
+.page { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+
+.glass {
+  position: relative;
+  background: linear-gradient(150deg, var(--glass-strong), var(--glass) 55%, var(--glass-strong));
+  -webkit-backdrop-filter: blur(22px) saturate(190%) brightness(1.04);
+  backdrop-filter: blur(22px) saturate(190%) brightness(1.04);
+  border-radius: 32px;
+  box-shadow:
+    inset 0 2px 1px -1px var(--edge),
+    inset 0 -2px 3px -2px var(--edge-dim),
+    inset 0 0 22px -6px var(--edge-dim),
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 28px 50px -22px var(--shadow);
+  min-width: 0;
+}
+.refract .glass { backdrop-filter: url(#lg) blur(10px) saturate(190%) brightness(1.05); }
+.glass::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; pointer-events: none;
+  background:
+    radial-gradient(240px circle at var(--mx, 18%) var(--my, 0%), rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0) 62%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0) 32%, rgba(255, 255, 255, 0) 68%, rgba(255, 255, 255, 0.4));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.pad { padding: 26px; }
+h2.label { font-size: 12px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+
+.hero { display: flex; flex-direction: column; gap: 22px; padding: 34px 28px 34px; animation: rise 0.8s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes rise { from { transform: translateY(18px); } to { transform: none; } }
+.pill { align-self: flex-start; display: inline-flex; align-items: center; gap: 9px; padding: 7px 15px; border-radius: 999px; font-size: 13px; font-weight: 700; background: var(--glass-strong); box-shadow: inset 0 1px 0 var(--edge), inset 0 0 0 1px var(--edge-dim); }
+.pill i { width: 8px; height: 8px; border-radius: 50%; background: #3ddc97; box-shadow: 0 0 0 4px rgba(61, 220, 151, 0.25); }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(3.1rem, 15vw, 5.4rem); line-height: 0.94; letter-spacing: -0.045em; text-wrap: balance; }
+h1 em { display: block; font-style: italic; font-weight: 400; letter-spacing: -0.03em; }
+.lead { font-size: 1.1rem; color: var(--muted); max-width: 42ch; font-weight: 500; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; color: var(--muted); padding-top: 18px; border-top: 1px solid var(--edge-dim); }
+
+.lens {
+  position: absolute; z-index: 4; top: 26px; right: 20px; width: 112px; height: 112px; border-radius: 50%;
+  cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+  background: radial-gradient(circle at 32% 24%, rgba(255,255,255,0.75), rgba(255,255,255,0.08) 34%, rgba(255,255,255,0) 52%), radial-gradient(circle at 70% 82%, rgba(255,255,255,0.28), rgba(255,255,255,0) 40%);
+  -webkit-backdrop-filter: blur(1.5px) saturate(190%) brightness(1.08);
+  backdrop-filter: blur(1.5px) saturate(190%) brightness(1.08);
+  box-shadow: inset 0 2px 3px rgba(255,255,255,0.95), inset 0 -6px 14px -4px rgba(255,255,255,0.55), inset 0 0 0 1.5px rgba(255,255,255,0.55), 0 18px 30px -10px var(--shadow), 0 2px 4px rgba(0,0,0,0.08);
+  transition: box-shadow 0.25s;
+}
+.refract .lens { backdrop-filter: url(#lens) saturate(190%) brightness(1.08); }
+.lens.drag { cursor: grabbing; }
+.lens:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.lens-hint { position: absolute; z-index: 1; top: 146px; right: 20px; width: 112px; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); pointer-events: none; }
+
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.chips li { padding: 11px 20px; border-radius: 999px; font-weight: 700; background: var(--glass-strong); box-shadow: inset 0 1px 0 var(--edge), inset 0 0 0 1px var(--edge-dim); }
+
+dl.rows { display: flex; flex-direction: column; }
+dl.rows > div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 14px; padding-block: 13px; border-bottom: 1px solid var(--edge-dim); }
+dl.rows > div:first-child { padding-top: 0; }
+dl.rows > div:last-child { border-bottom: 0; padding-bottom: 0; }
+dl.rows dt { color: var(--muted); font-weight: 600; font-size: 14px; }
+dl.rows dd { font-weight: 700; overflow-wrap: anywhere; }
+
+.links { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.links a { display: flex; flex-direction: column; justify-content: space-between; gap: 34px; min-height: 140px; padding: 20px; border-radius: 28px; color: var(--fg); text-decoration: none; transition: transform 0.3s cubic-bezier(.2,.8,.2,1); }
+.links a:hover, .links a:focus-visible { transform: translateY(-4px) scale(1.025); outline: none; }
+.links a:focus-visible { box-shadow: inset 0 1.5px 0 var(--edge), 0 0 0 3px var(--accent); }
+.links .top { display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.links .top b { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; font-size: 1rem; color: var(--fg); background: var(--glass-strong); box-shadow: inset 0 1px 0 var(--edge), inset 0 0 0 1px var(--edge-dim); letter-spacing: 0; }
+.links .n { font-family: var(--display); font-weight: 600; font-size: 1.55rem; letter-spacing: -0.03em; line-height: 1.1; }
+.links .s { display: block; font-family: var(--body); font-weight: 600; font-size: 12px; color: var(--muted); margin-top: 5px; letter-spacing: 0; overflow-wrap: anywhere; }
+
+.tabbar { position: fixed; z-index: 5; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; padding: 0 max(16px, env(safe-area-inset-right, 0px)) calc(14px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); pointer-events: none; }
+.tabbar ul { pointer-events: auto; list-style: none; display: flex; gap: 2px; padding: 6px; border-radius: 999px; max-width: 100%; position: relative; }
+.tabbar a { position: relative; z-index: 1; display: block; padding: 11px 17px; border-radius: 999px; color: var(--fg); text-decoration: none; font-weight: 800; font-size: 14px; }
+.tabbar a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.ind { position: absolute; z-index: 0; top: 6px; bottom: 6px; left: 0; width: 60px; border-radius: 999px; background: var(--glass-strong); box-shadow: inset 0 1.5px 0 var(--edge), inset 0 0 0 1px var(--edge-dim), 0 6px 14px -6px var(--shadow); transition: transform 0.45s cubic-bezier(.3,1.3,.5,1), width 0.45s cubic-bezier(.3,1.3,.5,1); }
+section { scroll-margin-top: 16px; }
+
+@media (max-width: 480px) {
+  .links { grid-template-columns: 1fr; }
+  .links a { min-height: 0; gap: 20px; }
+  dl.rows > div { grid-template-columns: 1fr; gap: 0; }
+  .tabbar a { padding: 11px 14px; font-size: 13px; }
+  .lens { width: 96px; height: 96px; top: 22px; right: 16px; }
+  .lens-hint { top: 124px; right: 16px; width: 96px; }
+}
+@media (prefers-reduced-motion: reduce) { .orb, .hero { animation: none; } html { scroll-behavior: auto; } .links a, .ind, .lens { transition: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="lg" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.006 0.01" numOctaves="2" seed="11" result="n"/>
+    <feGaussianBlur in="n" stdDeviation="3" result="nb"/>
+    <feDisplacementMap in="SourceGraphic" in2="nb" scale="46" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="1" seed="4" result="n"/>
+    <feGaussianBlur in="n" stdDeviation="1.5" result="nb"/>
+    <feDisplacementMap in="SourceGraphic" in2="nb" scale="34" xChannelSelector="R" yChannelSelector="B"/>
+  </filter>
+</svg>
+
+<div class="orbs" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="orb o4"></div></div>
+
+<main class="page" id="page">
+  <header class="glass hero" id="home">
+    <span class="pill"><i></i>Video creator</span>
+    <h1>Shreyash <em>Kudwe</em></h1>
+    <p class="lead">I'm a video creator, sharing my creativity, documenting my journey, and building high-impact content.</p>
+    <p class="meta"><span>Dhamangaon Railway</span><span>Video editor</span><span>Graphic designer</span></p>
+  </header>
+  <div class="lens" id="lens" role="img" aria-label="Glass lens. Drag it over the page." tabindex="0"></div>
+  <p class="lens-hint" aria-hidden="true">Drag me</p>
+
+  <section class="glass pad" id="skills">
+    <h2 class="label">Skills</h2>
+    <ul class="chips">
+      <li>Graphic design</li>
+      <li>Motion graphics</li>
+      <li>UI/UX</li>
+    </ul>
+  </section>
+
+  <section class="glass pad">
+    <h2 class="label">Details</h2>
+    <dl class="rows">
+      <div><dt>Name</dt><dd>Shreyash Kudwe</dd></div>
+      <div><dt>Location</dt><dd>Dhamangaon Railway</dd></div>
+      <div><dt>Work</dt><dd>Video editor, graphic designer</dd></div>
+      <div><dt>Status</dt><dd>Currently studying</dd></div>
+      <div><dt>Languages</dt><dd>English, Marathi, Hindi</dd></div>
+      <div><dt>Contact</dt><dd>shreyashkudwe1@gmail.com</dd></div>
+    </dl>
+  </section>
+
+  <section id="links">
+    <h2 class="label" style="padding-left:8px">Links</h2>
+    <ul class="links">
+      <li><a class="glass" href="https://www.youtube.com/@shreyashKudwe1" target="_blank" rel="noopener"><span class="top"><span>Channel</span><b>&#8599;</b></span><span class="n">YouTube<span class="s">prasnal</span></span></a></li>
+      <li><a class="glass" href="https://www.linkedin.com/in/shreyash-kudwe-935509381" target="_blank" rel="noopener"><span class="top"><span>Profile</span><b>&#8599;</b></span><span class="n">LinkedIn<span class="s">shreyash-kudwe</span></span></a></li>
+      <li><a class="glass" href="https://discord.gg/tX4ZunA2" target="_blank" rel="noopener"><span class="top"><span>Community</span><b>&#8599;</b></span><span class="n">Discord<span class="s">discord.gg/tX4ZunA2</span></span></a></li>
+      <li><a class="glass" href="https://shxxshop1.blogspot.com/?m=1" target="_blank" rel="noopener"><span class="top"><span>Store</span><b>&#8599;</b></span><span class="n">Shop<span class="s">shx</span></span></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<nav class="tabbar" aria-label="Sections">
+  <ul class="glass" id="tabs">
+    <span class="ind" id="ind" aria-hidden="true"></span>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#links">Links</a></li>
+  </ul>
+</nav>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var ua = navigator.userAgent;
+    if (/Chrome|Chromium|CriOS|Edg/.test(ua) && !/Firefox|FxiOS/.test(ua)) root.classList.add('refract');
+  } catch (e) {}
+
+  var glasses = Array.prototype.slice.call(document.querySelectorAll('.glass'));
+  var px = window.innerWidth * 0.2, py = window.innerHeight * 0.1, queued = false;
+  function paint() {
+    queued = false;
+    for (var i = 0; i < glasses.length; i++) {
+      var r = glasses[i].getBoundingClientRect();
+      if (r.bottom < -300 || r.top > window.innerHeight + 300) continue;
+      glasses[i].style.setProperty('--mx', (px - r.left) + 'px');
+      glasses[i].style.setProperty('--my', (py - r.top) + 'px');
+    }
+  }
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(paint); } }
+  window.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; queue(); }, { passive: true });
+  window.addEventListener('scroll', function () {
+    if (!window.matchMedia('(hover: hover)').matches) {
+      py = window.innerHeight * (0.15 + 0.5 * (window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight)));
+      px = window.innerWidth * 0.3;
+    }
+    queue();
+  }, { passive: true });
+  window.addEventListener('resize', queue);
+  queue();
+
+  var lens = document.getElementById('lens'), page = document.getElementById('page');
+  var hint = document.querySelector('.lens-hint');
+  var ox = 0, oy = 0, sx = 0, sy = 0, dragging = false;
+  function setPos(x, y) {
+    var pr = page.getBoundingClientRect();
+    var maxX = 24, minX = -(pr.width - lens.offsetWidth - 28);
+    x = Math.max(minX, Math.min(maxX, x));
+    y = Math.max(-10, Math.min(page.scrollHeight - lens.offsetHeight - 10, y));
+    ox = x; oy = y;
+    lens.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+    if (hint) hint.style.opacity = '0';
+  }
+  lens.addEventListener('pointerdown', function (e) {
+    dragging = true; sx = e.clientX - ox; sy = e.clientY - oy;
+    lens.classList.add('drag'); lens.setPointerCapture(e.pointerId); e.preventDefault();
+  });
+  lens.addEventListener('pointermove', function (e) { if (dragging) setPos(e.clientX - sx, e.clientY - sy); });
+  function end() { dragging = false; lens.classList.remove('drag'); }
+  lens.addEventListener('pointerup', end);
+  lens.addEventListener('pointercancel', end);
+  lens.addEventListener('keydown', function (e) {
+    var d = { ArrowLeft: [-24, 0], ArrowRight: [24, 0], ArrowUp: [0, -24], ArrowDown: [0, 24] }[e.key];
+    if (d) { e.preventDefault(); setPos(ox + d[0], oy + d[1]); }
+  });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('#tabs a'));
+  var ind = document.getElementById('ind');
+  function moveTo(a) {
+    var li = a.parentElement;
+    ind.style.width = li.offsetWidth + 'px';
+    ind.style.transform = 'translateX(' + li.offsetLeft + 'px)';
+  }
+  var current = links[0];
+  function spy() {
+    var mid = window.innerHeight * 0.35, best = links[0];
+    var nearBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 8;
+    links.forEach(function (a) {
+      var el = document.querySelector(a.getAttribute('href'));
+      if (el && el.getBoundingClientRect().top <= mid) best = a;
+    });
+    if (nearBottom) best = links[links.length - 1];
+    if (best !== current) { current = best; moveTo(best); }
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  window.addEventListener('resize', function () { moveTo(current); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { moveTo(current); });
+  moveTo(current);
+})();
+</script>
+</body>
+</html>
